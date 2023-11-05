@@ -7,8 +7,8 @@ import com.cocomo.game.domain.GameRepository
 class LocalGameRepository : GameRepository {
 
     private val games = mutableMapOf<GameId, Game>()
-    private var id: Int = 0
-    private fun generateId() = GameId((id++).toLong())
+    private var id = 0L
+    private fun generateId() = GameId((++id))
 
     override fun save(model: Game): Game = when (model.id) {
         null -> insert(model)
